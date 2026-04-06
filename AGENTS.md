@@ -31,6 +31,9 @@ uv run ruff format src/ tests/
 bash .claude/hooks/lint.sh          # ruff format check
 bash .claude/hooks/test.sh          # pytest (excludes special envs)
 bash .claude/hooks/check-debug.sh   # Find print, breakpoint, TODO
+
+# Type checking (if needed)
+uv run mypy src/
 ```
 
 ## Code Style Guidelines
@@ -170,3 +173,22 @@ with create_sync_client("my_env") as client:
 - Use `from __future__ import annotations` for forward references
 - Prefer `Field()` over `Field(default=...)` for required fields with constraints
 - Use `model_rebuild()` when needed for forward references in Pydantic models
+
+## Available Skills
+
+This repo uses specialized skills for common tasks:
+
+- **work-on-issue**: Start work on GitHub issue with TDD workflow
+- **write-tests**: Write failing tests from requirements before implementation
+- **implement**: Make tests pass after tests are written
+- **simplify**: Refactor code after tests pass (Red-Green-Refactor)
+- **pre-submit-pr**: Run comprehensive checks before submitting PR
+- **alignment-review**: Review code for bugs and OpenEnv principles
+- **rfc-check**: Determine if changes require an RFC
+- **release**: Deploy environments to HuggingFace Spaces
+- **hf-space-recovery**: Diagnose/recover failing Space deployments
+- **update-docs**: Fix stale documentation after API changes
+- **sprint**: Work on batch of GitHub issues in parallel
+- **watch-pr**: Monitor PR CI and auto-fix failures
+
+Invoke skills with: `/<skill-name>` in the Task tool
